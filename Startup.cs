@@ -1,13 +1,14 @@
+using _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication;
+using _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Contexts;
+using _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Repositories;
+using _ProyectoFinal_Johanny_Vivas_Arias.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace _ProyectoFinal_Johanny_Vivas_Arias
 {
@@ -23,6 +24,13 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IMachineManager, MachineManager>();
+            services.AddScoped<IMachineRepository, DbMachineRepository>();
+            string conexion = Configuration["ConnectionStrings:AzureDb"].ToString();
+            services.AddDbContext<SimulatorDataContext>(options =>
+            {
+                options.UseSqlServer(conexion);
+            }); 
             services.AddControllersWithViews();
         }
 

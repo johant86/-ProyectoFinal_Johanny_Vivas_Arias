@@ -1,8 +1,25 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+<style type="text/css">
+/*    .number_area {
+        width: 300px;
+    }*/
+</style>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container">
+        <div class="number_area">
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="Privacy">Enlace</a>
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="Configuration">Configuration</a>
+            <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Enlace</a>
+            <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Enlace</a>
+        </div>
+    </div>
 </div>
+
+
+
+@*<button type="button" class="btn btn-primary btn-lg btn-block">Botón de bloque</button>
+    <button type="button" class="btn btn-default btn-lg btn-block">Botón de bloque</button>
+    <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Enlace</a>*@
