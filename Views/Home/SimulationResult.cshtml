@@ -1,0 +1,54 @@
+﻿@model IEnumerable<_ProyectoFinal_Johanny_Vivas_Arias.Models.ContinuosProdEmulate>
+
+@{
+    ViewData["Title"] = "SimulationResult";
+}
+
+<h1>RESULTADOS DE SIMULACIÓN</h1>
+<p>
+    <a asp-action="Index">REGRESAR</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              MAQUINA
+            </th>
+            <th>
+               TOTAL DE PRODUCTOS
+            </th>      
+            <th>
+                GANANCIAS NETAS
+            </th>
+            <th>
+               GANANCIAS REALES
+            </th>
+            <th>
+               TOTAL DE HORAS
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.machine.name)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.totalProducts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wingross)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.realWin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalHours)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<_ProyectoFinal_Johanny_Vivas_Arias.Models.ContinuosProdEmulate>
+
+@{
+    ViewData["Title"] = "EmulatorView";
+}
+
+<h1>CONFIGURACIONES DE EMULADOR</h1>
+
+<p>
+    <a asp-action="CreateEmulateConfiguration">CREAR NUEVO</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="display:none">
+               ID
+            </th>
+            <th>
+                MAQUINA
+            </th>
+            <th>
+                PRODUCTO
+            </th>
+            <th>
+               HORAS X DIA
+            </th>
+            <th>
+                DIAS X SEMANA
+            </th>
+            <th>
+              COSTO X HORA
+            </th>
+            <th>
+                MESES
+            </th>
+            <th>
+              DIAS
+            </th>
+            <th>
+               HORAS
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td style="display:none ;">>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.machine.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dailyHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.weeklyDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hourCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Months)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.days)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hours)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditEmulateConfiguration", new { id=item.id  })
+            </td>
+        </tr>
+            }
+        }
+
+
+    </tbody>
+</table>

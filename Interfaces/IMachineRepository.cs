@@ -10,5 +10,14 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Interfaces
     {
         List<Machine> GetAllMachine();
         Machine GetMachinById(int id);
+        bool AddMachine(Machine machine);
+        bool DeleteMachine(int id);
+        bool EditMachine(Machine machine);
+        List<ContinuosProdEmulate> GetAllEmulateData();
+        bool EditEmulateMachine(ContinuosProdEmulate data);
+
+        ContinuosProdEmulate GetEmulateDataById(int id);
+
+        bool EditContinuosProdEmulate(ContinuosProdEmulate data);
     }
 }

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<_ProyectoFinal_Johanny_Vivas_Arias.Models.DamageLog>
+
+@{
+    ViewData["Title"] = "ExecuteSimulation";
+}
+
+<h1>Simulation</h1>
+
+<p>
+    <a asp-action="Index">REGRESAR</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idMachine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.month)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buidProdInFailTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wingrossInFailTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.realWinInFailTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monthRepare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dayRepare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hourRepare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buidProdOtherMachine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wingrossOtherMachine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.realWinOtherMachine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idMachine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.month)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.buidProdInFailTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wingrossInFailTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.realWinInFailTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monthRepare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dayRepare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hourRepare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.buidProdOtherMachine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wingrossOtherMachine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.realWinOtherMachine)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

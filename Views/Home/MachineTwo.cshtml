@@ -4,7 +4,7 @@
     ViewData["Title"] = "MachineOne";
 }
 
-<h1>Maquina #1</h1>
+<h1>Maquina #2</h1>
 
 @if (Model == null)
 {
@@ -41,8 +41,8 @@
                 TIEMPO REPARACION
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.status)
+                </th>*@
             <th></th>
         </tr>
     </thead>
@@ -65,10 +65,10 @@
                 @Html.DisplayFor(modelItem => Model.timeToFix)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => Model.status)
-            </td>*@
+                    @Html.DisplayFor(modelItem => Model.status)
+                </td>*@
             <td>
-                @Html.ActionLink("Editar", "ViewEditMachine", new {  id= Model.id }) 
+                @Html.ActionLink("Editar", "ViewEditMachine", new { id = Model.id })
                 @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
                 @*@Html.ActionLink("Delete", "DeleteMachine", new { id = Model.id })*@
             </td>

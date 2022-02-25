@@ -14,5 +14,12 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Models
         public int Months { set; get; }
         public int days { set; get; }
         public int hours { set; get; }
+        public int totalProducts { set; get; }
+        public int TotalTimeInRepare { set; get; }
+        public int timeToRepare { set; get; }
+        public float wingross { set; get; }
+        public float realWin { set; get; }
+        public int totalHours { set; get; }
+
     }
 }

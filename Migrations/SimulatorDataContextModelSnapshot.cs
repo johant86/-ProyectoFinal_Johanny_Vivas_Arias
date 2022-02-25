@@ -29,6 +29,9 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Migrations
                     b.Property<int>("Months")
                         .HasColumnType("int");
 
+                    b.Property<int>("TotalTimeInRepare")
+                        .HasColumnType("int");
+
                     b.Property<int>("dailyHours")
                         .HasColumnType("int");
 
@@ -47,8 +50,23 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Migrations
                     b.Property<int?>("productid")
                         .HasColumnType("int");
 
+                    b.Property<float>("realWin")
+                        .HasColumnType("real");
+
+                    b.Property<int>("timeToRepare")
+                        .HasColumnType("int");
+
+                    b.Property<int>("totalHours")
+                        .HasColumnType("int");
+
+                    b.Property<int>("totalProducts")
+                        .HasColumnType("int");
+
                     b.Property<int>("weeklyDays")
                         .HasColumnType("int");
+
+                    b.Property<float>("wingross")
+                        .HasColumnType("real");
 
                     b.HasKey("id");
 
@@ -63,21 +81,33 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Migrations
                         {
                             id = 1,
                             Months = 6,
+                            TotalTimeInRepare = 0,
                             dailyHours = 8,
                             days = 0,
                             hourCost = 10f,
                             hours = 0,
-                            weeklyDays = 6
+                            realWin = 0f,
+                            timeToRepare = 0,
+                            totalHours = 0,
+                            totalProducts = 0,
+                            weeklyDays = 6,
+                            wingross = 0f
                         },
                         new
                         {
                             id = 2,
                             Months = 4,
+                            TotalTimeInRepare = 0,
                             dailyHours = 12,
                             days = 0,
                             hourCost = 15f,
                             hours = 0,
-                            weeklyDays = 6
+                            realWin = 0f,
+                            timeToRepare = 0,
+                            totalHours = 0,
+                            totalProducts = 0,
+                            weeklyDays = 6,
+                            wingross = 0f
                         });
                 });
 

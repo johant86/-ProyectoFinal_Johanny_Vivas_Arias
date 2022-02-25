@@ -50,7 +50,13 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Migrations
                     hourCost = table.Column<float>(type: "real", nullable: false),
                     Months = table.Column<int>(type: "int", nullable: false),
                     days = table.Column<int>(type: "int", nullable: false),
-                    hours = table.Column<int>(type: "int", nullable: false)
+                    hours = table.Column<int>(type: "int", nullable: false),
+                    totalProducts = table.Column<int>(type: "int", nullable: false),
+                    TotalTimeInRepare = table.Column<int>(type: "int", nullable: false),
+                    timeToRepare = table.Column<int>(type: "int", nullable: false),
+                    wingross = table.Column<float>(type: "real", nullable: false),
+                    realWin = table.Column<float>(type: "real", nullable: false),
+                    totalHours = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,11 +77,11 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Migrations
 
             migrationBuilder.InsertData(
                 table: "tbContinuosProdEmulate",
-                columns: new[] { "id", "Months", "dailyHours", "days", "hourCost", "hours", "machineid", "productid", "weeklyDays" },
+                columns: new[] { "id", "Months", "TotalTimeInRepare", "dailyHours", "days", "hourCost", "hours", "machineid", "productid", "realWin", "timeToRepare", "totalHours", "totalProducts", "weeklyDays", "wingross" },
                 values: new object[,]
                 {
-                    { 1, 6, 8, 0, 10f, 0, null, null, 6 },
-                    { 2, 4, 12, 0, 15f, 0, null, null, 6 }
+                    { 1, 6, 0, 8, 0, 10f, 0, null, null, 0f, 0, 0, 0, 6, 0f },
+                    { 2, 4, 0, 12, 0, 15f, 0, null, null, 0f, 0, 0, 0, 6, 0f }
                 });
 
             migrationBuilder.InsertData(

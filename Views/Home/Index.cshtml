@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 <style type="text/css">
-/*    .number_area {
+    /*    .number_area {
         width: 300px;
     }*/
 </style>
@@ -10,10 +10,12 @@
     <h1 class="display-4">Welcome</h1>
     <div class="container">
         <div class="number_area">
-            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="Privacy">Enlace</a>
-            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="Configuration">Configuration</a>
-            <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Enlace</a>
-            <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Enlace</a>
+
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="Configuration">Configuración maquinas</a>
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="EmulatorView">Configuración de simulación</a>
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="ExecuteSimulation">Ejecutar simulación</a>
+            <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="SimulationResult">Resultados de sumulación</a>
+            <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Salir del programa</a>
         </div>
     </div>
 </div>

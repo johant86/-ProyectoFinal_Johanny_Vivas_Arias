@@ -23,32 +23,7 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Controllers
         }
 
         public IActionResult Index()
-        {
-            ContinuosProdEmulate emulate = new ContinuosProdEmulate()
-            {
-                id = 1,
-                dailyHours = 8,
-                weeklyDays = 6,
-                product = new Product 
-                { 
-                    id = 1, 
-                    name = "test2" 
-                },
-                machine = new Machine
-                {
-                    id = 1,
-                    productsPerHour = 100,
-                    failProbability = "1,0",
-                    status = true,
-                    timeToFix = 3,
-
-                },
-                hourCost = 10,
-                hours = 0,
-                days = 0,
-                Months = 6
-            };
-            _Aplication.RunSimulation(emulate);
+        {  
             return View();
         }
 
@@ -62,15 +37,20 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Controllers
             return View();
         }
 
+      
         public IActionResult MachineOne()
         {
-            Machine machine = _Aplication.GetMachinById(1);
-
-
+            Machine machine = _Aplication.GetMachines()[0];
             return View(machine);
         }
 
         public IActionResult MachineTwo()
+        {
+            Machine machine = _Aplication.GetMachines()[1];
+            return View(machine);
+        }
+
+        public IActionResult ViewCreateMachine()
         {
             return View();
         }
@@ -78,16 +58,72 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Controllers
         [HttpPost]
         public IActionResult CreateMachine(Machine machine)
         {
+               _Aplication.AddMachine(machine);
+               return RedirectToAction("MachineOne");
+        }
 
+        public IActionResult DeleteMachine(int id)
+        {
+            _Aplication.DeleteMachine(id);
             return View();
         }
 
-       
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult ViewEditMachine(int id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            Machine machine = _Aplication.GetMachinById(id);
+            return View(machine);
         }
+        public IActionResult EditMachine(Machine machine)
+        {
+            _Aplication.EditMachine(machine);
+            return RedirectToAction(machine.id==1 ? "MachineOne" : "MachineTwo");
+        }
+
+        public IActionResult EmulatorView()
+        {
+            List<ContinuosProdEmulate> data = _Aplication.GetAllEmulateData();
+            return View(data);
+        }
+
+        public IActionResult CreateEmulateConfiguration()
+        {
+            return View();
+        }
+
+        public IActionResult EditEmulateConfiguration(int id)
+        {
+           ContinuosProdEmulate data =  _Aplication.GetEmulateDataById(id);
+
+            return View(data);
+        }
+
+        public IActionResult SaveEditEmulateConfiguration(ContinuosProdEmulate data)
+        {
+            bool value = _Aplication.EditEmulateMachine(data);
+
+            return RedirectToAction("EmulatorView");
+        }
+
+        public IActionResult AddEmulateConfiguration(ContinuosProdEmulate cofig)
+        {
+            return RedirectToAction("EmulatorView");
+        }
+
+        public IActionResult ExecuteSimulation()
+        {
+            List<ContinuosProdEmulate> data = _Aplication.GetAllEmulateData();
+
+            List<DamageLog> logs=  _Aplication.RunSimulation(data);
+        
+
+            return View(logs);
+        }
+
+        public IActionResult SimulationResult()
+        {
+            List<ContinuosProdEmulate> data = _Aplication.GetAllEmulateData();
+            return View(data);
+        }
+
     }
 }
