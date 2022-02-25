@@ -38,17 +38,25 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
             int HorasSemanaM1 = emulateData[0].dailyHours * emulateData[0].weeklyDays;
             int SemanasMesM1 = emulateData[0].Months * 4;
             int TotalHorasM1 = HorasSemanaM1 * SemanasMesM1;
-            int segundosM1 = TotalHorasM1 * 60;
+            int MinutesM1 = TotalHorasM1 * 60;
 
             int HorasSemanaM2 = emulateData[1].dailyHours * emulateData[1].weeklyDays;
             int SemanasMesM2 = emulateData[1].Months * 4;
             int TotalHorasM2 = HorasSemanaM2 * SemanasMesM2;
-            int segundosM2 = TotalHorasM2 * 60;
+            int MinutesM2 = TotalHorasM2 * 60;
 
-            int segundos = segundosM1 > segundosM2 ? segundosM1 : segundosM2;
+            int segundos = MinutesM1 > MinutesM2 ? MinutesM1 : MinutesM2;
 
             int count = 0;
 
+            int dayM1 = 1;
+            int hoursM1 = 0;
+            int monthM1 = 1;
+
+            int dayM2 = 1;
+            int hoursM2 = 0;
+            int monthM2 = 1;
+            DamageLog log = new DamageLog();
             for (int i = 0; i <= segundos; i++)
             {
                 count++;
@@ -57,8 +65,23 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
                 {
                     
                     count = 0;
-                    if (i<= segundosM1)
+                    hoursM1++;
+                    hoursM2++;
+
+
+                    if (i<= MinutesM1)
                     {
+                        if (hoursM1 == emulateData[0].dailyHours)
+                        {
+                            hoursM1 = 1;
+                            dayM1++;
+
+                            if (dayM1 == (emulateData[0].weeklyDays * 4))
+                            {
+                                dayM1 = 1;
+                                monthM1++;
+                            }
+                        }
                         emulateData[0].totalHours++;
                         if (emulateData[0].machine.status)
                         {
@@ -68,24 +91,27 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
                             if (number == emulateData[0].machine.failProbability)
                             {
                                 emulateData[0].machine.status = false;
-                                DamageLog log = new DamageLog
+
+
+                                 log = new DamageLog
                                 {
-                                    idMachine = emulateData[0].machine.id,
-                                    month =  (i / ((HorasSemanaM1 * 4) * 60)) < 0 ? 1 : (i / ((HorasSemanaM1 * 4) * 60)),
-                                    day = 4,
-                                    hour = 3 ,
+                                    DamageMachine = emulateData[0].machine,
+                                    MachineInProd = emulateData[1].machine,
+                                    month = monthM1,
+                                    day = dayM1,
+                                    hour = hoursM1,
                                     buidProdInFailTime = emulateData[0].totalProducts,
                                     wingrossInFailTime = emulateData[0].totalProducts * emulateData[0].product.productPrice,
-                                    realWinInFailTime = emulateData[0].totalProducts * emulateData[0].product.productPrice,
-                                    monthRepare = 1 ,
-                                    dayRepare = 2,
-                                    hourRepare = 2,
+                                    realWinInFailTime = (emulateData[0].totalProducts * emulateData[0].product.productPrice) - (emulateData[0].hourCost * emulateData[0].totalHours),
+                                    monthRepare = 0,// monthM1,
+                                    dayRepare = 0,//hoursM1 + emulateData[0].machine.timeToFix > emulateData[0].dailyHours ? dayM1 + 1 : dayM1,
+                                    hourRepare = 0, // hoursM1 + emulateData[0].machine.timeToFix,
                                     buidProdOtherMachine = emulateData[1].totalProducts,
                                     wingrossOtherMachine = emulateData[1].totalProducts * emulateData[1].product.productPrice,
-                                    realWinOtherMachine = emulateData[1].totalProducts * emulateData[1].product.productPrice
+                                    realWinOtherMachine = (emulateData[1].totalProducts * emulateData[1].product.productPrice) - (emulateData[1].hourCost * emulateData[1].totalHours)
 
                                 };
-                                logs.Add(log);
+                                //logs.Add(log);
                             }
 
                         }
@@ -97,12 +123,29 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
                             {
                                 emulateData[0].machine.status = true;
                                 emulateData[0].timeToRepare = 0;
+
+                                //ADD LOG M1
+                                log.monthRepare = monthM1;
+                                log.dayRepare = dayM1;
+                                log.hourRepare = hoursM1;
+                                logs.Add(log);
                             }
                         }
                     }
 
-                    if (i <= segundosM2)
+                    if (i <= MinutesM2)
                     {
+                        if (hoursM2 == emulateData[1].dailyHours)
+                        {
+                            hoursM2 = 1;
+                            dayM2++;
+
+                            if (dayM2 == (emulateData[1].weeklyDays * 4))
+                            {
+                                dayM2 = 1;
+                                monthM2++;
+                            }
+                        }
                         emulateData[1].totalHours++;
                         if (emulateData[1].machine.status)
                         {
@@ -112,21 +155,23 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
                             if (number == emulateData[1].machine.failProbability)
                             {
                                 emulateData[1].machine.status = false;
-                                DamageLog log = new DamageLog
+                                //DamageLog log = new DamageLog
+                                 log = new DamageLog
                                 {
-                                    idMachine = emulateData[1].machine.id,
-                                    month = (i / ((HorasSemanaM1 * 4) * 60)) < 0 ? 1 : (i / ((HorasSemanaM1 * 4) * 60)),
-                                    day = 4,
-                                    hour = 3,
+                                    DamageMachine = emulateData[1].machine,
+                                    MachineInProd = emulateData[0].machine,
+                                    month = monthM2,
+                                    day = dayM2  ,
+                                    hour = hoursM2 ,
                                     buidProdInFailTime = emulateData[1].totalProducts,
                                     wingrossInFailTime = emulateData[1].totalProducts * emulateData[1].product.productPrice,
-                                    realWinInFailTime = emulateData[1].totalProducts * emulateData[1].product.productPrice,
-                                    monthRepare = 1,
-                                    dayRepare = 2,
-                                    hourRepare = 2,
+                                    realWinInFailTime = (emulateData[1].totalProducts * emulateData[1].product.productPrice) - (emulateData[1].hourCost * emulateData[1].totalHours),
+                                    monthRepare = monthM2,
+                                    dayRepare = dayM2,
+                                    hourRepare = hoursM2 + emulateData[0].machine.timeToFix,
                                     buidProdOtherMachine = emulateData[0].totalProducts,
                                     wingrossOtherMachine = emulateData[0].totalProducts * emulateData[0].product.productPrice,
-                                    realWinOtherMachine = emulateData[0].totalProducts * emulateData[0].product.productPrice
+                                    realWinOtherMachine = (emulateData[0].totalProducts * emulateData[0].product.productPrice) - (emulateData[0].hourCost * emulateData[0].totalHours),
                                 };
                                 logs.Add(log);
                             }
@@ -139,7 +184,14 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
                             if (emulateData[1].timeToRepare == emulateData[1].machine.timeToFix)
                             {
                                 emulateData[1].machine.status = true;
+                                emulateData[1].machine.status = true;
                                 emulateData[1].timeToRepare = 0;
+                                
+                                //ADD LOG M2
+                                log.monthRepare = monthM2;
+                                log.dayRepare = dayM2;
+                                log.hourRepare = hoursM2;
+                                logs.Add(log);
                             }
                         }
                     }
@@ -151,6 +203,8 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
             {
                 item.wingross= (item.product.productPrice * item.totalProducts);
                 item.realWin = item.wingross - item.hourCost * item.totalHours;
+                item.totalHours = 0;
+                item.timeToRepare = 0;
                 _repository.EditContinuosProdEmulate(item);
             }
 

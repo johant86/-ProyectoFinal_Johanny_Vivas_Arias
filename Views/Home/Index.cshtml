@@ -1,13 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<style type="text/css">
-    /*    .number_area {
-        width: 300px;
-    }*/
-</style>
+<script>
+    function CloseWindow() {
+
+        window.close();
+    }
+</script>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Maquinas y simulación</h1>
     <div class="container">
         <div class="number_area">
 
@@ -15,13 +16,8 @@
             <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="EmulatorView">Configuración de simulación</a>
             <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="ExecuteSimulation">Ejecutar simulación</a>
             <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="Home" asp-action="SimulationResult">Resultados de sumulación</a>
-            <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Salir del programa</a>
+            <a class="btn btn-primary btn-lg btn-block"  asp-area="" onclick="CloseWindow()">Salir del programa</a>
         </div>
     </div>
 </div>
 
-
-
-@*<button type="button" class="btn btn-primary btn-lg btn-block">Botón de bloque</button>
-    <button type="button" class="btn btn-default btn-lg btn-block">Botón de bloque</button>
-    <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Enlace</a>*@

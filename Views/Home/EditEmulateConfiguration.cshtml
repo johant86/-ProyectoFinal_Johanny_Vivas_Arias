@@ -4,9 +4,10 @@
     ViewData["Title"] = "EditEmulateConfiguration";
 }
 
-<h1>EditEmulateConfiguration</h1>
-
-<h4>ContinuosProdEmulate</h4>
+<h1>Configuración de simulador</h1>
+<p>
+    <a asp-action="EmulatorView">REGRESAR</a>
+</p>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,43 +19,40 @@
                 <span asp-validation-for="id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="dailyHours" class="control-label"></label>
+                <label  class="control-label">HORAS DIARIAS</label>
                 <input asp-for="dailyHours" class="form-control" />
                 <span asp-validation-for="dailyHours" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="weeklyDays" class="control-label"></label>
+                <label  class="control-label">DIAS X SEMANA</label>
                 <input asp-for="weeklyDays" class="form-control" />
                 <span asp-validation-for="weeklyDays" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="hourCost" class="control-label"></label>
+                <label  class="control-label">COSTO X HORA</label>
                 <input asp-for="hourCost" class="form-control" />
                 <span asp-validation-for="hourCost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Months" class="control-label"></label>
+                <label  class="control-label">MESES</label>
                 <input asp-for="Months" class="form-control" />
                 <span asp-validation-for="Months" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="days" class="control-label"></label>
+                <label  class="control-label">DIAS</label>
                 <input asp-for="days" class="form-control" />
                 <span asp-validation-for="days" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="hours" class="control-label"></label>
+                <label  class="control-label">HORAS</label>
                 <input asp-for="hours" class="form-control" />
                 <span asp-validation-for="hours" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="GUARDAR" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

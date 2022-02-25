@@ -120,7 +120,7 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.Controllers
         }
 
         public IActionResult SimulationResult()
-        {
+        {    
             List<ContinuosProdEmulate> data = _Aplication.GetAllEmulateData();
             return View(data);
         }

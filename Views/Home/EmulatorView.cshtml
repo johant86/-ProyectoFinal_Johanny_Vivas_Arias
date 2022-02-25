@@ -6,14 +6,24 @@
 
 <h1>CONFIGURACIONES DE EMULADOR</h1>
 
+
+
+@if (Model.Count() < 2)
+{
+    <p>
+        <a asp-action="CreateEmulateConfiguration">Create Machine</a>
+    </p>
+}
+
 <p>
-    <a asp-action="CreateEmulateConfiguration">CREAR NUEVO</a>
+    <a asp-action="Index">REGRESAR</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
             <th style="display:none">
-               ID
+                ID
             </th>
             <th>
                 MAQUINA
@@ -22,22 +32,22 @@
                 PRODUCTO
             </th>
             <th>
-               HORAS X DIA
+                HORAS X DIA
             </th>
             <th>
                 DIAS X SEMANA
             </th>
             <th>
-              COSTO X HORA
+                COSTO X HORA
             </th>
             <th>
                 MESES
             </th>
             <th>
-              DIAS
+                DIAS
             </th>
             <th>
-               HORAS
+                HORAS
             </th>
             <th></th>
         </tr>
@@ -48,38 +58,39 @@
         {
             @foreach (var item in Model)
             {
-        <tr>
-            <td style="display:none ;">>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.machine.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.product.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dailyHours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.weeklyDays)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.hourCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Months)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.days)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.hours)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditEmulateConfiguration", new { id=item.id  })
-            </td>
-        </tr>
+                <tr>
+                    <td style="display:none ;">
+                        >
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.machine.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dailyHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.weeklyDays)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hourCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Months)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hours)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditEmulateConfiguration", new { id = item.id })
+                    </td>
+                </tr>
             }
         }
 

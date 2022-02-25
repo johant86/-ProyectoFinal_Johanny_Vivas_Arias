@@ -2,7 +2,9 @@
 {
     public class DamageLog
     {
-        public int idMachine  { set; get; }
+        public int id { set; get; }
+        public virtual Machine DamageMachine { set; get; }
+        public virtual Machine MachineInProd { set; get; }
         public int month { set; get; }
         public int day { set; get; }
         public int hour { set; get; }
