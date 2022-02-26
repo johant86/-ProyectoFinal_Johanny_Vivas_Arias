@@ -23,9 +23,6 @@
             <th>
                GANANCIAS REALES
             </th>
-            <th>
-               TOTAL DE HORAS
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -39,15 +36,11 @@
                 @Html.DisplayFor(modelItem => item.totalProducts)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.wingross)
+               $ @Html.DisplayFor(modelItem => item.wingross)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.realWin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalHours)
-            </td>
-            
+               $ @Html.DisplayFor(modelItem => item.realWin)
+            </td>        
         </tr>
 }
     </tbody>

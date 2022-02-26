@@ -35,42 +35,50 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
             //HORAS =100
 
             List<DamageLog> logs = new List<DamageLog>();
-            int HorasSemanaM1 = emulateData[0].dailyHours * emulateData[0].weeklyDays;
-            int SemanasMesM1 = emulateData[0].Months * 4;
-            int TotalHorasM1 = HorasSemanaM1 * SemanasMesM1;
-            int MinutesM1 = TotalHorasM1 * 60;
+            //int HorasSemanaM1 = emulateData[0].dailyHours * emulateData[0].weeklyDays;
+            //int SemanasMesM1 = emulateData[0].Months * 4;
+            //int TotalHorasM1 = HorasSemanaM1 * SemanasMesM1;
+            //int MinutesM1 = TotalHorasM1 * 60;
 
-            int HorasSemanaM2 = emulateData[1].dailyHours * emulateData[1].weeklyDays;
-            int SemanasMesM2 = emulateData[1].Months * 4;
-            int TotalHorasM2 = HorasSemanaM2 * SemanasMesM2;
-            int MinutesM2 = TotalHorasM2 * 60;
+            //int HorasSemanaM2 = emulateData[1].dailyHours * emulateData[1].weeklyDays;
+            //int SemanasMesM2 = emulateData[1].Months * 4;
+            //int TotalHorasM2 = HorasSemanaM2 * SemanasMesM2;
+            //int MinutesM2 = TotalHorasM2 * 60;
 
-            int segundos = MinutesM1 > MinutesM2 ? MinutesM1 : MinutesM2;
+            //int segundos = MinutesM1 > MinutesM2 ? MinutesM1 : MinutesM2;
+
+            int MinutesM1 = (((emulateData[0].dailyHours * emulateData[0].weeklyDays) * 4) * emulateData[0].Months) * 60;
+            int MinutesM2 = (((emulateData[1].dailyHours * emulateData[1].weeklyDays) * 4) * emulateData[1].Months) * 60;
+            int minutes = MinutesM1 > MinutesM2 ? MinutesM1 : MinutesM2;
 
             int count = 0;
 
             int dayM1 = 1;
-            int hoursM1 = 0;
+            int hoursM1 = 1;
             int monthM1 = 1;
 
             int dayM2 = 1;
-            int hoursM2 = 0;
+            int hoursM2 = 1;
             int monthM2 = 1;
+
+            int c = 0;
             DamageLog log = new DamageLog();
-            for (int i = 0; i <= segundos; i++)
+            for (int i = 0; i <= minutes; i++)
             {
                 count++;
 
                 if (count == 60)
                 {
-                    
+                    c++;
                     count = 0;
-                    hoursM1++;
-                    hoursM2++;
+                    //hoursM1++;
+                    //hoursM2++;
 
 
                     if (i<= MinutesM1)
                     {
+                        hoursM1++;
+                  
                         if (hoursM1 == emulateData[0].dailyHours)
                         {
                             hoursM1 = 1;
@@ -135,6 +143,7 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
 
                     if (i <= MinutesM2)
                     {
+                        hoursM2++;
                         if (hoursM2 == emulateData[1].dailyHours)
                         {
                             hoursM2 = 1;
@@ -173,7 +182,7 @@ namespace _ProyectoFinal_Johanny_Vivas_Arias.DataAccess.Aplication
                                     wingrossOtherMachine = emulateData[0].totalProducts * emulateData[0].product.productPrice,
                                     realWinOtherMachine = (emulateData[0].totalProducts * emulateData[0].product.productPrice) - (emulateData[0].hourCost * emulateData[0].totalHours),
                                 };
-                                logs.Add(log);
+                                //logs.Add(log);
                             }
                           
                         }
